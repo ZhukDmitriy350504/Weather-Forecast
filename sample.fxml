@@ -1,105 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.web.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.*?>
 <?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<fx:root fx:id="TabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" type="TabPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllInterface">
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="717.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerInterface">
     <tabs>
-        <Tab fx:id="MainMenu" text="Главная">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                    <children>
-                        <ProgressIndicator fx:id="Progress" layoutX="14.0" layoutY="363.0" prefHeight="117.0" prefWidth="118.0" progress="0.0">
-                            <cursor>
-                                <Cursor fx:constant="DEFAULT" />
-                            </cursor>
-                            <effect>
-                                <Blend />
-                            </effect>
-                        </ProgressIndicator>
-                    </children></AnchorPane>
-            </content>
-        </Tab>
         <Tab fx:id="SettingsMenu" text="Настройки">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="430.0" prefWidth="600.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="633.0">
                     <children>
-                        <Button fx:id="ConfirmSettings" layoutX="205.0" layoutY="352.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="190.0" text="Подтвердить" textFill="#646563">
+                        <Button layoutX="293.0" layoutY="463.0" mnemonicParsing="false" onAction="#Confirm" prefHeight="2.0" prefWidth="134.0" text="Подтвердить" textFill="#646563">
                             <font>
-                                <Font size="25.0" />
+                                <Font size="15.0" />
                             </font>
                         </Button>
-                        <MenuButton fx:id="SetData" layoutX="92.0" layoutY="138.0" mnemonicParsing="false" text="Выберите дату" AnchorPane.bottomAnchor="353.0">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="1" />
-                                <MenuItem mnemonicParsing="false" text="2" />
-                                <MenuItem mnemonicParsing="false" text="3" />
-                                <MenuItem mnemonicParsing="false" text="4" />
-                                <MenuItem mnemonicParsing="false" text="5" />
-                                <MenuItem mnemonicParsing="false" text="6" />
-                                <MenuItem mnemonicParsing="false" text="7" />
-                                <MenuItem mnemonicParsing="false" text="8" />
-                                <MenuItem mnemonicParsing="false" text="9" />
-                                <MenuItem mnemonicParsing="false" text="10" />
-                                <MenuItem mnemonicParsing="false" text="11" />
-                                <MenuItem mnemonicParsing="false" text="12" />
-                                <MenuItem mnemonicParsing="false" text="13" />
-                                <MenuItem mnemonicParsing="false" text="14" />
-                                <MenuItem mnemonicParsing="false" text="15" />
-                                <MenuItem mnemonicParsing="false" text="16" />
-                                <MenuItem mnemonicParsing="false" text="17" />
-                                <MenuItem mnemonicParsing="false" text="18" />
-                                <MenuItem mnemonicParsing="false" text="19" />
-                                <MenuItem mnemonicParsing="false" text="20" />
-                                <MenuItem mnemonicParsing="false" text="21" />
-                                <MenuItem mnemonicParsing="false" text="22" />
-                                <MenuItem mnemonicParsing="false" text="23" />
-                                <MenuItem mnemonicParsing="false" text="24" />
-                                <MenuItem mnemonicParsing="false" text="25" />
-                                <MenuItem mnemonicParsing="false" text="26" />
-                                <MenuItem mnemonicParsing="false" text="27" />
-                                <MenuItem mnemonicParsing="false" text="28" />
-                                <MenuItem mnemonicParsing="false" text="29" />
-                                <MenuItem mnemonicParsing="false" text="30" />
-                                <MenuItem mnemonicParsing="false" text="31" />
-                            </items>
-                        </MenuButton>
-                        <MenuButton fx:id="SetMonth" layoutX="239.0" layoutY="138.0" mnemonicParsing="false" text="Выберите месяц">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Январь" />
-                                <MenuItem mnemonicParsing="false" text="Февраль" />
-                                <MenuItem mnemonicParsing="false" text="Март" />
-                                <MenuItem mnemonicParsing="false" text="Апрель" />
-                                <MenuItem mnemonicParsing="false" text="Май" />
-                                <MenuItem mnemonicParsing="false" text="Июнь" />
-                                <MenuItem mnemonicParsing="false" text="Июль" />
-                                <MenuItem mnemonicParsing="false" text="Август" />
-                                <MenuItem mnemonicParsing="false" text="Сентябрь" />
-                                <MenuItem mnemonicParsing="false" text="Октябрь" />
-                                <MenuItem mnemonicParsing="false" text="Ноябрь" />
-                                <MenuItem mnemonicParsing="false" text="Декабрь" />
-                            </items>
-                        </MenuButton>
-                        <MenuButton fx:id="SetYear" layoutX="395.0" layoutY="138.0" mnemonicParsing="false" text="Выберите год">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="2014" />
-                                <MenuItem mnemonicParsing="false" text="2015" />
-                            </items>
-                        </MenuButton>
-                        <Label layoutX="173.0" layoutY="31.0" prefHeight="34.0" prefWidth="254.0" text="Исходные данные" textFill="#5ab05f">
+                        <Label fx:id="Indicator" alignment="CENTER" layoutX="264.0" layoutY="346.0" prefHeight="33.0" prefWidth="191.0" text="Исходные данные" textFill="#5ab05f">
                             <font>
-                                <Font size="30.0" />
+                                <Font size="21.0" />
                             </font>
                         </Label>
-                    </children></AnchorPane>
+                  <TextField fx:id="InputString" layoutX="250.0" layoutY="406.0" prefHeight="33.0" prefWidth="221.0" />
+                    </children>
+            </AnchorPane>
             </content>
         </Tab>
     </tabs>
-</fx:root>
+</TabPane>
