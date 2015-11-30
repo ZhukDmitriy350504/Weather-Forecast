@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="717.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerInterface">
     <tabs>
         <Tab fx:id="SettingsMenu" text="Настройки">
@@ -29,6 +28,46 @@
                             </font>
                         </Label>
                   <TextField fx:id="InputString" layoutX="250.0" layoutY="406.0" prefHeight="33.0" prefWidth="221.0" />
+                  <Label fx:id="weatherRegion" layoutX="507.0" layoutY="24.0" prefHeight="39.0" prefWidth="195.0" text="Region">
+                     <font>
+                        <Font name="Georgia Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="WeatherTemperature" layoutX="29.0" layoutY="51.0" prefHeight="62.0" prefWidth="213.0" text="Temperature">
+                     <font>
+                        <Font name="Georgia Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="WeatherUpdated" layoutX="544.0" layoutY="307.0" prefHeight="27.0" prefWidth="145.0" text="UpdateTime">
+                     <font>
+                        <Font name="Georgia Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="WeatherCloud" layoutX="29.0" layoutY="139.0" prefHeight="40.0" prefWidth="226.0" text="Cloud">
+                     <font>
+                        <Font name="Georgia Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="WeatherWind" layoutX="29.0" layoutY="192.0" prefHeight="37.0" prefWidth="231.0" text="Wind">
+                     <font>
+                        <Font name="Georgia Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="WeatherRain" layoutX="29.0" layoutY="244.0" prefHeight="41.0" prefWidth="189.0" text="Rain">
+                     <font>
+                        <Font name="Georgia Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="WeatherWet" layoutX="29.0" layoutY="301.0" prefHeight="38.0" prefWidth="181.0" text="Wet">
+                     <font>
+                        <Font name="Georgia Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="DayTime" layoutX="513.0" layoutY="67.0" prefHeight="46.0" prefWidth="144.0" text="DayTime">
+                     <font>
+                        <Font name="Georgia Bold" size="16.0" />
+                     </font>
+                  </Label>
                     </children>
             </AnchorPane>
             </content>
