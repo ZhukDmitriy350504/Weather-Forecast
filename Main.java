@@ -12,8 +12,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("WeatherForecast");
-        primaryStage.setScene(new Scene(root, 717, 570));
+        primaryStage.setScene(new Scene(root, 700, 553));
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 
 
