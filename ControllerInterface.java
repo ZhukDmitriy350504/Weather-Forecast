@@ -1,9 +1,10 @@
 package sample;
 
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -11,16 +12,16 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import static sample.Logic.SourceCode;
-import static sample.Logic.checkInternetConnection;
 
 
 public class ControllerInterface {
@@ -32,10 +33,16 @@ public class ControllerInterface {
     public TextField InputString;
 
     @FXML
-    public Label weatherRegion,WeatherTemperature,WeatherUpdated,WeatherCloud,WeatherWind,WeatherRain,WeatherWet,DayTime;
+    public Label weatherRegion,WeatherTemperature,WeatherUpdated,WeatherCloud,WeatherWind,WeatherRain,WeatherWet,DayTime,ErrorLabel,ErrorLabel1,ErrorLabel11;
+    @FXML
+    public ImageView image;
+
+@FXML
+public TabPane mainWindow;
 
 
 
+    static boolean connectionFlag = false;
 
     public String Reg,time,Temperature,Cloud,Wind,Rain,Wet,TimeOfDay;
 
@@ -44,7 +51,7 @@ public class ControllerInterface {
 
  ////////////////////////////
     @FXML
-    public void inputData(TransformerException e) throws IOException, Exception {
+    public void inputData()  {
 
         boolean nameOfRegionFlag = false;
         String regions[]= {"baranovichi","bobruisk","borisov","bragin","brest","vasilevichi","verkhnedvinsk","vileika","vitebsk","volkovysk",
@@ -52,39 +59,42 @@ public class ControllerInterface {
                 "lepel","lida","lyntupy","marina_gorka","minsk","mogilev","mozyr","novogrudok","orsha","pinsk",
                 "polotsk","senno","slavgorodslutsk","stolbtsy","sharkovschina"};
 
+
         String s = InputString.getText();
 
     int count = regions.length;
+    boolean a = false;
+        System.out.println(regions.length);
+        System.out.println("aloha");
 
-try {
-
-    for (int i = 0; i < count; i++) {
-        if (regions[i].equals(s))
-        {
+    for (int i = 0; i < count; i++)
+    {
+        if (regions[i].equals(s)) {
             nameOfRegionFlag = true;
-        }}}
-catch (Exception a) {
-    e.printStackTrace();
+            a=true;
+        }
+    }
 
-    System.out.println("Incorrect Name of Region!!!");
-}
-}
+        if(a==false){checkingErrors.errorLabelSet(2,ErrorLabel,ErrorLabel1,ErrorLabel11);return;}
+        else checkingErrors.errorLabelDrop(2,ErrorLabel,ErrorLabel1,ErrorLabel11);
+    }
 
 
     @FXML
     private void Confirm() throws IOException, SAXException, ParserConfigurationException {
-boolean connectionFlag = false;
+
+
 
             try {
-
                 checkInternetConnection();
-                connectionFlag=true;
+
+                //checkingErrors.errorLabelDrop(1,ErrorLabel);
             } catch (Exception e) {
                 e.printStackTrace();
-
+                //checkingErrors.errorLabelSet(1,ErrorLabel);
                 System.out.println("No Connection!!!");
             }
-
+        inputData();
 
 if(connectionFlag==true) {
     String town = InputString.getText();
@@ -98,11 +108,7 @@ if(connectionFlag==true) {
 
     try {
         LINE = SourceCode(XML, code);
-    } catch (
-            Exception e
-            ) {
-        e.printStackTrace();
-        System.out.println("LINE Error!!!");
+    } catch (Exception e) { return;
     }
 
     System.out.println(LINE);
@@ -111,11 +117,10 @@ if(connectionFlag==true) {
     f.setValidating(false);
 
     DocumentBuilder builder = f.newDocumentBuilder();
-
     InputSource is = new InputSource(new StringReader(LINE));
 
     Document doc = builder.parse(is);
-
+    //if(builder.parse(is).get)
 
     XPath xpath = XPathFactory.newInstance().newXPath();
 
@@ -125,7 +130,7 @@ if(connectionFlag==true) {
         regionS = (String) xpath.evaluate(regionName, doc, XPathConstants.STRING);
         System.out.println(regionS);
     } catch (XPathExpressionException e) {
-        e.printStackTrace();
+       return;
     }
     Reg = regionS;
     weatherRegion.setText(Reg);
@@ -137,10 +142,10 @@ if(connectionFlag==true) {
         update_time = (String) xpath.evaluate(updateTime, doc, XPathConstants.STRING);
         System.out.println(update_time);
     } catch (XPathExpressionException e) {
-        e.printStackTrace();
+        return;
     }
     time = update_time;
-    WeatherUpdated.setText("След.обноление:"+time);
+    WeatherUpdated.setText(time);
 
 
     String temperature = "/weather/point/timestep/temperature_interval";
@@ -149,7 +154,7 @@ if(connectionFlag==true) {
         Tempr = (String) xpath.evaluate(temperature, doc, XPathConstants.STRING);
         System.out.println(Tempr);
     } catch (XPathExpressionException e) {
-        e.printStackTrace();
+       return;
     }
     Temperature = Tempr;
     WeatherTemperature.setText(Temperature);
@@ -161,7 +166,7 @@ if(connectionFlag==true) {
         Cld = (String) xpath.evaluate(cloud, doc, XPathConstants.STRING);
         System.out.println(Cld);
     } catch (XPathExpressionException e) {
-        e.printStackTrace();
+        return;
     }
     Cloud = Cld;
     WeatherCloud.setText(Cloud);
@@ -173,7 +178,7 @@ if(connectionFlag==true) {
         Wnd = (String) xpath.evaluate(wind, doc, XPathConstants.STRING);
         System.out.println(Wnd);
     } catch (XPathExpressionException e) {
-        e.printStackTrace();
+        return;
     }
     Wind = Wnd;
     WeatherWind.setText(Wind);
@@ -185,7 +190,7 @@ if(connectionFlag==true) {
         Rn = (String) xpath.evaluate(rain, doc, XPathConstants.STRING);
         System.out.println(Rn);
     } catch (XPathExpressionException e) {
-        e.printStackTrace();
+        return;
     }
     Rain = Rn;
     WeatherRain.setText(Rain);
@@ -197,7 +202,7 @@ if(connectionFlag==true) {
         Wt = (String) xpath.evaluate(wet, doc, XPathConstants.STRING);
         System.out.println(Wt);
     } catch (XPathExpressionException e) {
-        e.printStackTrace();
+        return;
     }
     Wet = Wt;
     WeatherWet.setText(Wet + "%");
@@ -209,13 +214,43 @@ if(connectionFlag==true) {
         dayTime = (String) xpath.evaluate(dtime, doc, XPathConstants.STRING);
         System.out.println(dayTime);
     } catch (XPathExpressionException e) {
-        e.printStackTrace();
+       return;
     }
     TimeOfDay = dayTime;
     DayTime.setText(TimeOfDay);
-}
-        else
+
+    IMAGE_ANIMATION(image);
+
+} else
     System.out.println("ERROR!!!");
+    }
+
+
+    public boolean checkInternetConnection() {
+        Boolean result = false;
+        HttpURLConnection con = null;
+        try {
+            // HttpURLConnection.setFollowRedirects(false);
+            // HttpURLConnection.setInstanceFollowRedirects(false)
+            con = (HttpURLConnection) new URL("http://www.nepogoda.ru").openConnection();
+            con.setRequestMethod("HEAD");
+            result = (con.getResponseCode() == HttpURLConnection.HTTP_OK);
+            System.out.println("Connection OK!!");
+            checkingErrors.errorLabelDrop(1, ErrorLabel, ErrorLabel1, ErrorLabel11);
+        }
+        catch (Exception e) {
+            checkingErrors.errorLabelSet(1, ErrorLabel, ErrorLabel1, ErrorLabel11);
+        }
+        return result;
+    }
+
+
+    public static boolean IMAGE_ANIMATION(ImageView line){
+        FadeTransition ft = new FadeTransition(Duration.millis(200), line);
+        ft.setToValue(1);
+        ft.setAutoReverse(true);
+        ft.play();
+        return true;
     }
 }
 

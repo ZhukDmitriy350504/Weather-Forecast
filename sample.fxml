@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.effect.*?>
@@ -11,13 +13,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="717.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerInterface">
+<TabPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="717.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerInterface">
     <tabs>
         <Tab fx:id="SettingsMenu" text="Настройки">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="633.0">
                     <children>
-                        <Button layoutX="293.0" layoutY="463.0" mnemonicParsing="false" onAction="#Confirm" prefHeight="2.0" prefWidth="134.0" text="Подтвердить" textFill="#646563">
+                  <ImageView fx:id="image" fitHeight="541.0" fitWidth="717.0" layoutX="-1.0" opacity="0.01" pickOnBounds="true">
+                     <image>
+                        <Image url="@111.gif" />
+                     </image></ImageView>
+                        <Button layoutX="292.0" layoutY="429.0" mnemonicParsing="false" onAction="#Confirm" prefHeight="2.0" prefWidth="134.0" text="Подтвердить" textFill="#646563">
                             <font>
                                 <Font size="15.0" />
                             </font>
@@ -27,47 +33,51 @@
                                 <Font size="21.0" />
                             </font>
                         </Label>
-                  <TextField fx:id="InputString" layoutX="250.0" layoutY="406.0" prefHeight="33.0" prefWidth="221.0" />
-                  <Label fx:id="weatherRegion" layoutX="507.0" layoutY="24.0" prefHeight="39.0" prefWidth="195.0" text="Region">
+                  <TextField fx:id="InputString" layoutX="250.0" layoutY="379.0" prefHeight="33.0" prefWidth="221.0" />
+                  <Label id="collorAndShadow" fx:id="weatherRegion" layoutX="507.0" layoutY="24.0" prefHeight="39.0" prefWidth="195.0" text="Region" textFill="#e7dede">
                      <font>
                         <Font name="Georgia Bold" size="20.0" />
+                     
                      </font>
                   </Label>
-                  <Label fx:id="WeatherTemperature" layoutX="29.0" layoutY="51.0" prefHeight="62.0" prefWidth="213.0" text="Temperature">
+                  <Label id="collorAndShadow" fx:id="WeatherTemperature" layoutX="29.0" layoutY="51.0" prefHeight="62.0" prefWidth="213.0" text="Temperature" textFill="#e7dede">
                      <font>
                         <Font name="Georgia Bold" size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="WeatherUpdated" layoutX="544.0" layoutY="307.0" prefHeight="27.0" prefWidth="145.0" text="UpdateTime">
+                  <Label id="collorAndShadow" fx:id="WeatherUpdated" layoutX="544.0" layoutY="307.0" prefHeight="27.0" prefWidth="145.0" text="UpdateTime" textFill="#e7dede">
                      <font>
                         <Font name="Georgia Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="WeatherCloud" layoutX="29.0" layoutY="139.0" prefHeight="40.0" prefWidth="226.0" text="Cloud">
+                  <Label id="collorAndShadow" fx:id="WeatherCloud" layoutX="29.0" layoutY="139.0" prefHeight="40.0" prefWidth="226.0" text="Cloud" textFill="#e7dede">
                      <font>
                         <Font name="Georgia Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="WeatherWind" layoutX="29.0" layoutY="192.0" prefHeight="37.0" prefWidth="231.0" text="Wind">
+                  <Label id="collorAndShadow" fx:id="WeatherWind" layoutX="29.0" layoutY="192.0" prefHeight="37.0" prefWidth="231.0" text="Wind" textFill="#e7dede">
                      <font>
                         <Font name="Georgia Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="WeatherRain" layoutX="29.0" layoutY="244.0" prefHeight="41.0" prefWidth="189.0" text="Rain">
+                  <Label id="collorAndShadow" fx:id="WeatherRain" layoutX="29.0" layoutY="244.0" prefHeight="41.0" prefWidth="189.0" text="Rain" textFill="#e7dede">
                      <font>
                         <Font name="Georgia Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="WeatherWet" layoutX="29.0" layoutY="301.0" prefHeight="38.0" prefWidth="181.0" text="Wet">
+                  <Label id="collorAndShadow" fx:id="WeatherWet" layoutX="29.0" layoutY="301.0" prefHeight="38.0" prefWidth="181.0" text="Wet" textFill="#e7dede">
                      <font>
                         <Font name="Georgia Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="DayTime" layoutX="513.0" layoutY="67.0" prefHeight="46.0" prefWidth="144.0" text="DayTime">
+                  <Label id="collorAndShadow" fx:id="DayTime" layoutX="513.0" layoutY="67.0" prefHeight="46.0" prefWidth="144.0" text="DayTime" textFill="#e7dede">
                      <font>
                         <Font name="Georgia Bold" size="16.0" />
                      </font>
                   </Label>
+                  <Label fx:id="ErrorLabel" alignment="CENTER" layoutX="2.0" layoutY="510.0" prefHeight="17.0" prefWidth="717.0" textAlignment="CENTER" textFill="#fc0505" />
+                  <Label fx:id="ErrorLabel1" alignment="CENTER" layoutY="493.0" prefHeight="17.0" prefWidth="717.0" textAlignment="CENTER" textFill="#fc0303" />
+                  <Label fx:id="ErrorLabel11" alignment="CENTER" layoutY="467.0" prefHeight="17.0" prefWidth="717.0" text="Status" textAlignment="CENTER" textFill="#1eae38" />
                     </children>
             </AnchorPane>
             </content>
