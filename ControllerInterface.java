@@ -27,9 +27,6 @@ import static sample.Logic.SourceCode;
 public class ControllerInterface {
 
     @FXML
-    public static TextArea t;
-
-    @FXML
     public TextField InputString;
 
     @FXML
@@ -156,6 +153,7 @@ if(connectionFlag==true) {
     } catch (XPathExpressionException e) {
        return;
     }
+
     Temperature = Tempr;
     WeatherTemperature.setText(Temperature);
 
